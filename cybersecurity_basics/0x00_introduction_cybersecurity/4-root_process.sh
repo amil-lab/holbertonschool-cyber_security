@@ -1,3 +1,2 @@
 #!/bin/bash
-USER=$1
-ps aux | grep "^$USER " | grep -v '^[^ ]* [^ ]* 0 *0 '
+ps aux | grep "^$1 " | grep -v '^[^ ]* [^ ]* 0 *0 '
