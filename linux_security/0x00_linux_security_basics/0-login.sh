@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo last -F | sed 's/ :[0-9]\+//' | head -n 5
+sudo last -F | sed 's/ :[0-9]\+//' | head -5
