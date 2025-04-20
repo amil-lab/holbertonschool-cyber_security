@@ -1,2 +1,2 @@
 #!/bin/bash
-whois "$1" | awk 'BEGIN{print "Type,Name,Org,Email,Phone"} /Registrant|Admin|Tech/ {t=$1} /Name:|Organization:|Email:|Phone:/ {gsub(/\r/,""); f[$1]=$0; sub(/.*: /,"",f[$1])} /^$/ {if(t){print t","f["Name:"]","f["Organization:"]","f["Email:"]","f["Phone:"]; delete f; t=""}}'
+whois "$1" | awk -v out="$1.csv" 'BEGIN{FS=": ";OFS=","} /^[A-Za-z ]+ (Organization|State\/Province|Country|Email):/ {gsub(/\r/,"",$2); print $1,$2 >> out}'
