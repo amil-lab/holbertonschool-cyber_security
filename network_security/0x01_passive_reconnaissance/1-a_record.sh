@@ -1,2 +1,2 @@
 #!/bin/bash
-nslookup "$1" | awk '/^Address: / {print $2}'
+echo "$(nslookup "$1" | grep '^Address:' | tail -n1 | cut -d' ' -f2)"
