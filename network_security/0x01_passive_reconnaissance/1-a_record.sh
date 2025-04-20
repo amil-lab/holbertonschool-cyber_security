@@ -1,2 +1,2 @@
 #!/bin/bash
-echo "$(nslookup "$1" | grep 'Address' | tail -n +3)" 
+nslookup "$1" | grep 'Address' | tail -n +3
