@@ -1,2 +1,2 @@
 #!/bin/bash
-subfinder -silent -d $1 | while read sub; do host "$sub" | awk '/has address/ {gsub(/\.$/,"",$1); print $1 "," $4}'; done > "${1}.txt"
+domain=$1 && subfinder -d "$domain" -silent | awk -v d="$domain" '{print $0","; system("host " $0 " | grep \"address\" | awk \'{print $4}\' || echo \"-\"")}' | sed "s/,$//g" > "$domain".txt
